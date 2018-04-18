@@ -5,7 +5,7 @@ Recommended setup guide:
 	- go to the third tab ("Source Control" on the left tabsheet)
 	- click the three dots icon (...) and initialize git repository. Choose the workspace folder.
 	- press `` Ctrl+` `` or `` Cmd+` `` to open console/terminal to run commands.
-	- connect to this github repository using the command: `git remote add origin git@github.com:kevincentius/web-nutrition-front-end.git`
+	- connect to this github repository using the command: `git remote add origin https://github.com/kevincentius/web-nutrition-front-end.git`
 	- you can now pull (do this first), stage, commit and push via the three dots icon
 - Run the project on Chrome
 	- go to chrome://extensions
