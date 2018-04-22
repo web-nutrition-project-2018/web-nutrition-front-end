@@ -11,38 +11,7 @@ $(function(){
         };
         $.get( "http://localhost:8081/nutrition", http_params, function( data ) {
             // mock object (for testing, if server is not available)
-            /*var chartData = [
-                {
-                    "name": "effort",
-                    "display": "effort",
-                    "value": 85,
-                    "color": "#f00"
-                },
-                {
-                    "name": "topicality",
-                    "display": "topicality",
-                    "value": 25,
-                    "color": "#fc0"
-                },
-                {
-                    "name": "factuality",
-                    "display": "factuality",
-                    "value": 75,
-                    "color": "#0f0"
-                },
-                {
-                    "name": "emotion",
-                    "display": "emotion",
-                    "value": 95,
-                    "color": "#0cc"
-                },
-                {
-                    "name": "authority",
-                    "display": "authority",
-                    "value": 12,
-                    "color": "#00f"
-                }
-            ];*/
+            //var data = {"url": "https://stackoverflow.com/questions/4630704/receiving-fatal-not-a-git-repository-when-attempting-to-remote-add-a-git-repo", "nutrition": [{"name": "readability", "display": "readability: 61%", "value": 61.26, "percentage": 61.26, "color": "#f00"}, {"name": "flesch_kincaid_grade", "display": "flesch kincaid grade: 9", "value": 9.3, "percentage": 53.49999999999999, "color": "#fc0"}, {"name": "dale_chall_readability_score", "display": "dale chall readability: 8", "value": 7.83, "percentage": 34.75, "color": "#0f0"}, {"name": "linsear_write_formula", "display": "linsear write formula: 8", "value": 8.333333333333334, "percentage": 58.33333333333333, "color": "#0cc"}, {"name": "gunning_fog", "display": "gunning fog: 18", "value": 17.676831683168317, "percentage": 41.07722772277228, "color": "#00f"}]};
 
             console.log(data);
 
