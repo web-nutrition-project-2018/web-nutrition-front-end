@@ -1,14 +1,14 @@
 # Recommended setup guide:
 ## Setup Visual Studio Code (VSC)
 - [Download link](https://code.visualstudio.com/download)
-- Open VSC and choose a folder (workspace)
+- Open VSC and open a folder (workspace)
 
 ## Setup git
-- in VSC go to "Source Control" (third on the left tabsheet)
-- click the three dots icon (...) and initialize git repository. Choose the workspace folder.
+- [install git](https://git-scm.com/download) if you don't already have it
 - press `` Ctrl+` `` or `` Cmd+` `` to open console/terminal to run commands.
-- connect to this github repository using the command: `git remote add origin https://github.com/kevincentius/web-nutrition-front-end.git`
-- you can now pull (download source code) via the three dots icon
+- connect to this github repository using the command: `git clone https://github.com/kevincentius/web-nutrition-front-end.git`
+- you should now have the all the files/code
+- to pull any future updates, go to "Source Control" (third on the left tabsheet), click the three dots icon (...) -> Pull
 - want to contribute in the front end? I will need your github username/email so I can make you collaborator (allow to push changes)
 
 ## Run the project
