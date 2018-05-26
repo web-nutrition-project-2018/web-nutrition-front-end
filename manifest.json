@@ -4,10 +4,10 @@
     "version": "1.0.0",
     "description": "Web Nutrition",
     "icons": {
-        "16": "icon16.png"
+        "16": "images/icon16.png"
     },
     "browser_action": {
-        "default_icon": "icon16.png",
+        "default_icon": "images/icon16.png",
         "default_popup": "popup.html"
     },
     "permissions": [
