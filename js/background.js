@@ -1,5 +1,5 @@
 
-var USE_MOCK_DATA = false
+var USE_MOCK_DATA = true
 
 /*
  * Caches the result from server so when the user clicks our icon,
@@ -41,23 +41,30 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
 function fetchNutritionLabels(url, callback=null) {
     // if response is not cached, query the server
     if (cache[url] == null) {
-        (function() {
-            var cached = {ready: false, callbacks: []}
-            cache[url] = cached;
+        if (USE_MOCK_DATA) {
+            cache[url] = {ready: true, response: MOCK_DATA};
             if (callback != null) {
-                cached.callbacks.push(callback);
+                callback(MOCK_DATA);
             }
-
-            console.log('querying for ' + url);
-            http_params = {url: url};
-            $.get( "http://localhost:8081/nutrition", http_params, response => {
-                console.log('cached ' + url);
-                console.log(cached);
-                cached.response = response;
-                cached.ready = true;
-                cached.callbacks.forEach(c => c(response));
-            });
-        })();
+        } else {
+            (function() {
+                var cached = {ready: false, callbacks: []}
+                cache[url] = cached;
+                if (callback != null) {
+                    cached.callbacks.push(callback);
+                }
+    
+                console.log('querying for ' + url);
+                http_params = {url: url};
+                $.get( "http://localhost:8081/nutrition", http_params, response => {
+                    console.log('cached ' + url);
+                    console.log(cached);
+                    cached.response = response;
+                    cached.ready = true;
+                    cached.callbacks.forEach(c => c(response));
+                });
+            })();
+        }
     }
 }
 
