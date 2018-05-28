@@ -1,6 +1,4 @@
 
-var USE_MOCK_DATA = true
-
 // this function is executed everytime the user clicks on the extension icon (opening the popup)
 $(function(){
     console.log('popup.js');
@@ -12,11 +10,8 @@ $(function(){
             "url": url
         };
 
-        if (USE_MOCK_DATA) {
-            setTimeout(() => updateUi(MOCK_DATA), MOCK_LOADING_TIME)
-        } else {
-            $.get( "http://localhost:8081/nutrition", http_params, updateUi );
-        }
+        var bg = chrome.extension.getBackgroundPage();
+        bg.getNutritionLabels(url, updateUi);
     });
 });
 
@@ -62,45 +57,3 @@ function updateUi(data) {
 function updateExplanation(text) {
     $('#nutrition_explanation').text(text);
 }
-
-// If USE_MOCK_DATA is set to true, the following nutrition labels will be used instead of fetching from the server.
-var MOCK_LOADING_TIME = 1000 // milliseconds
-var MOCK_DATA = {
-    "nutrition": [
-        {
-            "name": "effort",
-            "display": "effort",
-            "value": 50,
-            "percentage": 100,
-            "color": "#f00"
-        },
-        {
-            "name": "topicality",
-            "display": "topicality",
-            "value": 40,
-            "percentage": 75,
-            "color": "#fc0"
-        },
-        {
-            "name": "factuality",
-            "display": "factuality",
-            "value": 30,
-            "percentage": 50,
-            "color": "#0f0"
-        },
-        {
-            "name": "emotion",
-            "display": "emotion",
-            "value": 20,
-            "percentage": 25,
-            "color": "#0cc"
-        },
-        {
-            "name": "authority",
-            "display": "authority",
-            "value": 10,
-            "percentage": 0,
-            "color": "#00f"
-        }
-    ]
-};

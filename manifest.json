@@ -10,7 +10,12 @@
         "default_icon": "images/icon16.png",
         "default_popup": "popup.html"
     },
+    "background" : {
+        "scripts": ["js/libs/jquery-3.3.1.min.js", "js/background.js"],
+        "persistent": false
+    },
     "permissions": [
+        "background",
         "tabs"
     ]
 }
