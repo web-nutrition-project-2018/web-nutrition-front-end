@@ -1,18 +1,74 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Test</title>
-        <script src="js/libs/jquery-3.3.1.min.js"></script>
-        <script src="js/popup.js"></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Web Nutrition</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="css/popup.css" />
+        <script src="js/libs/jquery-3.3.1.min.js"></script>
+        <script src="js/libs/tether.min.js"></script>
+        <script src="js/libs/bootstrap.min.js"></script>
+        <script src="js/popup.js"></script>
     </head>
     <body>
-        <h2>Web Nutrition</h2>
-        <table id="nutrition_loading"><tr><td height="100%" style="vertical-align: middle">
-            <div class="fa fa-refresh loader"></div>
-        </td></tr></table>
-        <div id="nutrition_chart"></div>
-        <div id="nutrition_explanation">-</div>
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col">
+                    <h2 id="plugin-name">Web Nutrition</h2>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-4 vertical-divider">
+                    <div class="col-content">
+                        <img class="label-icon img-fluid" src="images/man-user.png"/>
+                        <h1 class="label-name">Source</h1>
+                        <img class="img-fluid" src="images/gauge-placeholder.JPG"/>
+                        <img class="img-fluid" src="images/play-arrow.png"><span><p>Show More</p></span>
+                    </div>
+                </div>
+                <div class="col-4 vertical-divider">
+                    <div class="col-content">
+                        <img class="label-icon img-fluid" src="images/network.png"/>
+                        <h1 class="label-name">Virality</h1>
+                        <img class="img-fluid" src="images/gauge-placeholder.JPG"/>
+                    </div>
+                </div>
+                <div class="col-4 vertical-divider">
+                    <div class="col-content">
+                        <img class="label-icon img-fluid" src="images/open-book.png"/>
+                        <h1 class="label-name">Readability</h1>
+                        <img class="img-fluid" src="images/gauge-placeholder.JPG"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--<div class="container-fluid">-->
+
+            <!--<div class="row">-->
+                <!--<div class="col">-->
+                    <!--<h2 id="plugin-name">Web Nutrition</h2>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="row">-->
+                <!--<div class="col-4">-->
+                    <!--<p>test1</p>-->
+                    <!--<img class="img-fluid" src="images/man-user.png"/>-->
+                <!--</div>-->
+                <!--<div class="col-4">-->
+                    <!--<p>test2</p>-->
+                    <!--<img class="img-fluid" src="images/network.png"/>-->
+                <!--</div>-->
+                <!--<div class="col-4">-->
+                    <!--<p>test3</p>-->
+                    <!--<img class="img-fluid" src="images/open-book.png"/>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+
     </body>
 </html>
