@@ -10,7 +10,6 @@ html {
 
 body {
 	width: 500px;
-	height: 375px;
 	font-family: Futura, Tahoma, Trebuchet MS, Verdana, sans-serif;
 }
 
@@ -38,9 +37,16 @@ span {
 .label-name {
 	text-align: center;
 	padding-top: 1em;
-	padding-bottom: 1em;
 }
 
 .vertical-divider:not(:last-child) {
 	border-right: 1px solid #d3d7e5;
+}
+
+.footer {
+
+}
+
+.footer-text {
+	text-align: right;
 }
