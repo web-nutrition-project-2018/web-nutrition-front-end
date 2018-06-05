@@ -1,20 +1,46 @@
+@font-face {
+	font-family: Futura;
+	src: url('../fonts/futura medium bt.ttf');
+	src: local('Futura'), url('../fonts/futura medium bt.ttf') format('truetype');
+}
+
 html {
 	font-size: 1rem;
+}
+
+body {
+	width: 500px;
+	height: 375px;
+	font-family: Futura, Tahoma, Trebuchet MS, Verdana, sans-serif;
 }
 
 span {
 	float: right;
 }
 
+.content {
+
+}
+
 .col-content {
 	padding: 0.5em;
 }
 
+.plugin-name {
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	color: #e9ebf2;
+	background-color: #3a4b8b;
+}
+
 .label-name {
 	text-align: center;
-	padding: 1em;
+	padding-top: 1em;
+	padding-bottom: 1em;
 }
 
 .vertical-divider:not(:last-child) {
-	border-right: 1px solid lightgray;
+	border-right: 1px solid #d3d7e5;
 }
