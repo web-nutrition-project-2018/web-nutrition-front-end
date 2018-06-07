@@ -12,13 +12,5 @@
     },
     "permissions": [
         "tabs"
-    ],
-    "content_scripts": [{
-        "js": [
-            "js/libs/bootstrap.min.js",
-            "js/libs/jquery-3.3.1.min.js",
-            "js/libs/jquery.flip.min.js",
-            "popup.js"
-        ]
-    }]
+    ]
 }

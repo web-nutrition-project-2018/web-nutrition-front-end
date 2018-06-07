@@ -11,17 +11,23 @@ $(document).ready(function () {
     var backHeight = $('.back').outerHeight();
 
     if (frontHeight > backHeight) {
-        $('.flip-container, .back').height(frontHeight);
+        $('.flip-container, .card, .back').height(frontHeight);
     }
     else if (frontHeight > backHeight) {
-        $('.flip-container, .front').height(backHeight);
+        $('.flip-container, .card, .front').height(backHeight);
     }
     else {
-        $('.flip-container').height(backHeight);
+        $('.flip-container, .card, .front').height(backHeight);
     }
 
-    //this should load the imprint when clicking on the "i"
-    $('.row.plugin-name').click(function () {
-        $('.img-fluid').load('imprint.html')
+    //load imprint when clicking on the "i"
+    $('#imprint').click(function() {
+        // $('html').load('imprint.html');
+        window.location.href = "imprint.html";
     })
+
+    //go back to landing page
+    $('#back-arrow').click(function() {
+        window.location.href = "popup.html";
     })
+})
