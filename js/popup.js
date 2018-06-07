@@ -19,7 +19,8 @@ $(document).ready(function () {
     else {
         $('.flip-container').height(backHeight);
     }
-    
+
+    //this should load the imprint when clicking on the "i"
     $('.row.plugin-name').click(function () {
         $('.img-fluid').load('imprint.html')
     })
