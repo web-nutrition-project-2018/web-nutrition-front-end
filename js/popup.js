@@ -1,17 +1,22 @@
-
-// this block might be a possible solution for having the same size of the backside of card as front
-var heightFront, heightBack;
-
-heightFront = $('.front').height();
-heightBack = $('.back').height();
-
-if(heightFront > heightBack){
-    $('.card').height(heightFront);
-}else{
-    $('.card').height(heightBack);
-}
-
-//card flipping
 $(document).ready(function () {
-    $(".card").flip();
-});
+
+    $('.flip-container').click(function(){
+        $('.card').flip();
+        return false;
+    }).mouseleave(function () {
+        $('.flip-container > .card').removeClass('flipped');
+    });
+
+    var frontHeight = $('.front').outerHeight();
+    var backHeight = $('.back').outerHeight();
+
+    if (frontHeight > backHeight) {
+        $('.flip-container, .back').height(frontHeight);
+    }
+    else if (frontHeight > backHeight) {
+        $('.flip-container, .front').height(backHeight);
+    }
+    else {
+        $('.flip-container').height(backHeight);
+    }
+    })
