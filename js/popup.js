@@ -19,4 +19,8 @@ $(document).ready(function () {
     else {
         $('.flip-container').height(backHeight);
     }
+    
+    $('.row.plugin-name').click(function () {
+        $('.img-fluid').load('imprint.html')
+    })
     })
