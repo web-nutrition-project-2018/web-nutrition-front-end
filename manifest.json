@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "Web Nutrition",
     "version": "1.0.0",
-    "description": "Web Nutrition",
+    "description": "NewsCheck",
     "icons": {
         "16": "images/icon16.png"
     },
@@ -12,5 +12,13 @@
     },
     "permissions": [
         "tabs"
-    ]
+    ],
+    "content_scripts": [{
+        "js": [
+            "js/libs/bootstrap.min.js",
+            "js/libs/jquery-2.1..min.js",
+            "js/libs/jquery.flip.js",
+            "popup.js"
+        ]
+    }]
 }

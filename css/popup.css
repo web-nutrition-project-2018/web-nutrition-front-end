@@ -26,7 +26,27 @@ span {
 }
 
 .col-content {
-	padding: 0.5em;
+	/*perspective:800px;*/
+}
+
+.card {
+	border: none;
+	margin: 0.1em;
+
+	transition: transform 1.5s;
+	transform-style:preserve-3d;
+}
+
+.front {
+	padding: 0.1em;
+	backface-visibility: hidden;
+	transform: rotateY(0deg);
+}
+
+.back {
+	padding: 0.1em;
+	backface-visibility: hidden;
+	transform: rotateY(-180deg);
 }
 
 .plugin-name {
