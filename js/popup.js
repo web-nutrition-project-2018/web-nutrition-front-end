@@ -1,7 +1,11 @@
 $(document).ready(function () {
 
     $('.flip-container').click(function(){
-        $('.card').flip();
+        $('.card').flip({
+            //some optional stuff for flipping animation
+            axis: 'x',
+            //trigger: 'hover',
+            speed:200});
         return false;
     }).mouseleave(function () {
         $('.flip-container > .card').removeClass('flipped');
