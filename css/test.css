@@ -21,9 +21,15 @@
 }
 
 /* hide back of pane during swap */
-.front, .back {
+.front {
 	backface-visibility: hidden;
 
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.back {
+	backface-visibility: hidden;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -38,5 +44,6 @@
 
 /* back, initially hidden pane */
 .back {
+
 	transform: rotateY(180deg);
 }

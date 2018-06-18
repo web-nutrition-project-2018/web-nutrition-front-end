@@ -5,7 +5,7 @@
 }
 
 html {
-	font-size: 1rem;
+	font-size: 0.8rem;
 }
 
 body {
@@ -32,8 +32,7 @@ span {
 .card {
 	border: none;
 	margin: 0.1em;
-
-	transition: transform 1.5s;
+    transition: transform 1.5s;
 	transform-style:preserve-3d;
 }
 
@@ -44,16 +43,17 @@ span {
 }
 
 .back {
-	padding: 0.1em;
+	padding: 0.01em;
 	backface-visibility: hidden;
 	transform: rotateY(-180deg);
+
 }
 
 .plugin-name {
 	padding-top: 0.5em;
 	padding-bottom: 0.5em;
-	margin-top: 1em;
-	margin-bottom: 1em;
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
 	color: #e9ebf2;
 	background-color: #3a4b8b;
 }
