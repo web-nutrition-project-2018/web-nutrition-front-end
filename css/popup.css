@@ -46,7 +46,6 @@ span {
 	padding: 0.01em;
 	backface-visibility: hidden;
 	transform: rotateY(-180deg);
-
 }
 
 .plugin-name {
