@@ -1,82 +1,81 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Web Nutrition</title>
-        <link rel="stylesheet" type="text/css" href="css/normalize.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="css/popup.css" />
-        <script src="js/libs/jquery-3.3.1.min.js"></script>
-        <script src="js/libs/jquery.flip.min.js"></script>
-        <script src="js/libs/tether.min.js"></script>
-        <script src="js/libs/bootstrap.min.js"></script>
-        <script src="js/popup.js"></script>
-    </head>
-    <body>
-        <div class="container-fluid">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Web Nutrition</title>
+    <link rel="stylesheet" type="text/css" href="css/normalize.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/popup.css"/>
+    <script src="js/libs/jquery-3.3.1.min.js"></script>
+    <script src="js/libs/jquery.flip.min.js"></script>
+    <script src="js/libs/tether.min.js"></script>
+    <script src="js/libs/bootstrap.min.js"></script>
+    <script src="js/popup.js"></script>
+</head>
+<body>
+<div class="container-fluid">
 
-            <!--Headline/ Plugin Name Row-->
-            <div class="row plugin-name">
-                <div class="col">
-                    <h3>NewsCheck</h3><span><img id="imprint" class="img-fluid" src="images/info.png"/></span>
+    <!--Headline/ Plugin Name Row-->
+    <div class="row plugin-name">
+        <div class="col">
+            <h3>NewsCheck</h3><span><img id="imprint" class="img-fluid" src="images/info.png"/></span>
+        </div>
+    </div>
+
+    <div class="nutrition_loading">
+        <!--Content Row: Display Labels-->
+        <div class="row content">
+
+            <div class="col-4 vertical-divider">
+                <div class="col-content">
+                    <div class="flip-container">
+                        <div class="card" id="card_source">
+                            <div class="front">
+                                <img class="label-icon img-fluid" src="images/author.png"/>
+                                <h4 class="label-name">Source Popularity</h4>
+                                <!--<img class="img-fluid" src="images/gauge-placeholder.JPG"/>-->
+                            </div>
+                            <div class="back">
+                                <div class="row plugin-name">
+                                    <div class="col">
+                                        <h3>Source</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!--Content Row: Display Labels-->
-            <div class="row content">
 
-                <div class="col-4 vertical-divider">
-                    <div class="col-content">
-                        <div class="flip-container">
-                            <div class="card">
-                                <div class="front">
-                                    <img class="label-icon img-fluid" src="images/author.png"/>
-                                    <h4 class="label-name">Source</h4>
-                                    <!--<img class="img-fluid" src="images/gauge-placeholder.JPG"/>-->
-                                </div>
-
-                                <div class="back">
-                                    <div class="row plugin-name">
-                                        <div class="col">
-                                            <h3>source</h3>
-                                        </div>
+            <div class="col-4 vertical-divider">
+                <div class="col-content">
+                    <div class="flip-container">
+                        <div class="card" id="card_virality">
+                            <div class="front">
+                                <img class="label-icon img-fluid" src="images/virality.png"/>
+                                <h4 class="label-name">Virality</h4>
+                                <!--<img class="img-fluid" src="images/gauge-placeholder.JPG"/>-->
+                            </div>
+                            <div class="back">
+                                <div class="row plugin-name">
+                                    <div class="col">
+                                        <h3>Virality</h3>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
 
-                <div class="col-4 vertical-divider">
-                    <div class="col-content">
-                        <div class="flip-container">
-                            <div class="card">
-                                <div class="front">
-                                    <img class="label-icon img-fluid" src="images/virality.png"/>
-                                    <h4 class="label-name">Virality</h4>
-                                    <!--<img class="img-fluid" src="images/gauge-placeholder.JPG"/>-->
-                                </div>
-                                <div class="back">
-                                    <div class="row plugin-name">
-                                        <div class="col">
-                                            <h3>Virality</h3>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col-4 vertical-divider">
-                    <div class="col-content">
-                        <div class="flip-container">
-                        <div class="card">
+            <div class="col-4 vertical-divider">
+                <div class="col-content">
+                    <div class="flip-container">
+                        <div class="card" id="card_readability">
                             <div class="front">
                                 <img class="label-icon img-fluid" src="images/readability.png"/>
                                 <h4 class="label-name">Readability</h4>
@@ -91,20 +90,20 @@
                                 </div>
                             </div>
                         </div>
-                        </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <hr/>
+        <hr/>
 
-            <!--Content Row: Display Labels-->
-            <div class="row content">
+        <!--Content Row: Display Labels-->
+        <div class="row content">
 
-                <div class="col-4 vertical-divider">
-                    <div class="col-content">
-                        <div class="flip-container">
-                        <div class="card">
+            <div class="col-4 vertical-divider">
+                <div class="col-content">
+                    <div class="flip-container">
+                        <div class="card" id="card_sentiment">
                             <div class="front">
                                 <img class="label-icon img-fluid" src="images/sentiment.png"/>
                                 <h4 class="label-name">Sentiment</h4>
@@ -119,18 +118,18 @@
                                 </div>
                             </div>
                         </div>
-                        </div>
                     </div>
                 </div>
+            </div>
 
 
-                <div class="col-4 vertical-divider">
-                    <div class="col-content">
-                        <div class="flip-container">
-                        <div class="card">
+            <div class="col-4 vertical-divider">
+                <div class="col-content">
+                    <div class="flip-container">
+                        <div class="card" id="card_subjectivity">
                             <div class="front">
                                 <img class="label-icon img-fluid" src="images/glasses.png"/>
-                                <h4 class="label-name">Objectivity</h4>
+                                <h4 class="label-name">Subjectivity</h4>
                                 <!--<img class="img-fluid" src="images/gauge-placeholder.JPG"/>-->
                             </div>
                             <div class="back">
@@ -142,15 +141,15 @@
                                 </div>
                             </div>
                         </div>
-                        </div>
                     </div>
                 </div>
+            </div>
 
 
-                <div class="col-4 vertical-divider">
-                    <div class="col-content">
-                        <div class="flip-container">
-                        <div class="card">
+            <div class="col-4 vertical-divider">
+                <div class="col-content">
+                    <div class="flip-container">
+                        <div class="card" id="card_hot-topic">
                             <div class="front">
                                 <img class="label-icon img-fluid" src="images/hot-topic.png"/>
                                 <h4 class="label-name">Hot Topic</h4>
@@ -165,19 +164,20 @@
                                 </div>
                             </div>
                         </div>
-                        </div>
                     </div>
                 </div>
-
             </div>
 
-            <hr/>
-
-            <div class="row footer">
-                <div class="col-12">
-                    <p class="footer-text">&#9400; University of Duisburg-Essen 2018</p>
-                </div>
-            </div>
         </div>
-    </body>
+
+        <hr/>
+    </div>
+
+    <div class="row footer">
+        <div class="col-12">
+            <p class="footer-text">&#9400; University of Duisburg-Essen 2018</p>
+        </div>
+    </div>
+</div>
+</body>
 </html>
