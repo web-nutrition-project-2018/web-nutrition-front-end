@@ -7,9 +7,9 @@ $(document).ready(function () {
             //trigger: 'hover',
             speed:200});
         return false;
-    }).mouseleave(function () {
+    })/*.mouseleave(function () {
         $('.flip-container > .card').removeClass('flipped');
-    });
+    })*/;
 
     var frontHeight = $('.front').outerHeight();
     var backHeight = $('.back').outerHeight();
@@ -28,7 +28,7 @@ $(document).ready(function () {
     $('#imprint').click(function() {
         // $('html').load('imprint.html');
         window.location.href = "imprint.html";
-    })
+    });
 
     //go back to landing page
     $('#back-arrow').click(function() {
@@ -90,4 +90,22 @@ $(document).ready(function () {
         $('#nutrition_explanation').text(text);
     }
 
-})
+
+
+
+
+    //should do flipping and unflipping of all cards
+    let cards = document.getElementsByClassName("card");
+    document.getElementById('flipButton').addEventListener( 'click', function(){
+        for (i = 0; i < cards.length; i++){
+            cards[i].flip({
+                //some optional stuff for flipping animation
+                axis: 'x',
+                //trigger: 'hover',
+                speed:200});
+            }
+
+        }, false);
+
+});
+
