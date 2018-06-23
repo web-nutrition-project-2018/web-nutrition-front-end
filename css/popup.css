@@ -5,7 +5,7 @@
 }
 
 html {
-	font-size: 0.8rem;
+	font-size: 0.7rem;
 }
 
 body {
@@ -37,17 +37,18 @@ span {
 }
 
 .front {
+	position: absolute;
 	padding: 0.1em;
 	backface-visibility: hidden;
 	transform: rotateY(0deg);
 }
 
 .back {
+	position: absolute;
 	padding: 0.01em;
 	backface-visibility: hidden;
 	transform: rotateY(-180deg);
 }
-
 .plugin-name {
 	padding-top: 0.5em;
 	padding-bottom: 0.5em;
@@ -72,6 +73,14 @@ span {
 
 .footer-text {
 	text-align: right;
+}
+.header {
+	padding-top: 0.6em;
+	padding-bottom: 0.7em;
+	margin-top: 0.7em;
+	margin-bottom: 0.7em;
+	color: rgba(9, 9, 9, 0.99);
+	background-color: #fcfcfc;
 }
 
 #nutrition_loading {
