@@ -90,32 +90,41 @@ $(document).ready(function () {
             $('#nutrition_explanation').text(data.error);
         } else {
             // for each nutrition label, create a bar chart
-            data.nutrition.forEach(col => {
-                $('#card_' + col.name + ' .back').append(`
-                <div class="nutrition-bar" id="bar_${col.name}" tabindex="0">
-                    <div class="nutrition-track">
-                        <div class="nutrition-fill" id="fill_${col.name}">
-                            <span id="bar_value">${Math.round(col.value)}</span>
-                        </div>
-                    </div>
-                </div>
-            `);
+            labels = ['influence', 'virality', 'readability', 'sentiment', 'objectivity']
+            labels.forEach(label => {
+                let labelData = data.nutrition[label];
+                let backSide = $('#card_' + label + ' .back');
+                let mainScore = Math.round(labelData.main_score);
 
-            /*
-             * position the bar in the bar chart so that it is on the bottom and growing upwards
-             *  (otherwise the bar will be on the top, growing downwards)
-             */
-            $('#fill_' + col.name).css({
-                "height": col.percentage + "%",
-                "top": (100 - col.percentage) + "%",
-                "background": '#3a4b8b'
+                backSide.append(createHBar(mainScore, mainScore));
+                backSide.append('<div class="main-score-spacer"></div>');
+                
+                let first = true;
+                labelData.subfeatures.forEach(subfeature => {
+                    if (!first) {
+                        backSide.append('<div class="subfeature-spacer"></div>');
+                    }
+                    first = false;
+
+                    let shortName = subfeature.name.length < 12
+                        ? subfeature.name
+                        : subfeature.name.substring(0, 10) + '..';
+                    backSide.append(createHBar(subfeature.percentage, shortName + ': ' + Math.round(subfeature.value), subfeature.name));
+                });
             });
-
-            // show extra information on hover and click (hover is useless on mobile phone)
-            $('#bar_' + col.name).hover(e => { updateExplanation(col.display); });
-            $('#bar_' + col.name).click(e => { updateExplanation(col.display); });
-        });
         }
+    }
+
+    function createHBar(percentage, text, tooltip) {
+        let hbar = $(`
+            <div class='hbar'
+                 style='background: linear-gradient(to right, #3a4b8b ${percentage}% , #ccc ${percentage}%);'
+                 title='${tooltip}'>
+                ${text}
+            </div>
+        `);
+        hbar.tooltip();
+        return hbar;
     }
 
     function updateExplanation(text) {
