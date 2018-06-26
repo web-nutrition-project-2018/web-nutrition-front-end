@@ -1,27 +1,20 @@
 $(document).ready(function () {
 
-    $('.flip-container').click(function(){
-        $('.card').flip({
-            //some optional stuff for flipping animation
-            axis: 'x',
-            //trigger: 'hover',
-            speed:200});
-        return false;
-    })/*.mouseleave(function () {
-        $('.flip-container > .card').removeClass('flipped');
-    })*/;
+    //First set height!
+    setHeight()
 
-    var frontHeight = $('.front').outerHeight();
-    var backHeight = $('.back').outerHeight();
+    //BEGIN Section: Selctors
 
-    if (frontHeight > backHeight) {
-        $('.flip-container, .card, .back').height(frontHeight);
-    }
-    else if (frontHeight > backHeight) {
-        $('.flip-container, .card, .front').height(backHeight);
-    }
-    else {
-        $('.flip-container, .card, .front').height(backHeight);
+    $('.flip-container').click(function () {
+        flipCard();
+    });
+
+    $('#flipButton').click(function () {
+        flipAllCards();
+    });
+
+    function test () {
+        console.log("yes");
     }
 
     //load imprint when clicking on the "i"
@@ -33,21 +26,60 @@ $(document).ready(function () {
     //go back to landing page
     $('#back-arrow').click(function() {
         window.location.href = "popup.html";
-    })
-
-
-// get the URL currently opened tab
-    chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
-        var url = tabs[0].url;
-        var http_params = {
-            "url": url
-        };
-
-        var bg = chrome.extension.getBackgroundPage();
-        bg.getNutritionLabels(url, updateUi);
     });
 
-// Update UI based on nutrition data
+
+    //END Section: Selectors
+
+
+    //BEGIN Section: Methods
+
+    function setHeight() {
+        var frontHeight = $('.front').outerHeight();
+        var backHeight = $('.back').outerHeight();
+
+        if (frontHeight > backHeight) {
+            $('.flip-container, .card, .back').height(frontHeight);
+        }
+        else if (frontHeight > backHeight) {
+            $('.flip-container, .card, .front').height(backHeight);
+        }
+        else {
+            $('.flip-container, .card, .front').height(backHeight);
+        }
+    }
+
+    function flipCard() {
+        $('.card').flip({
+            //some optional stuff for flipping animation
+            axis: 'x',
+            //trigger: 'hover',
+            speed:200});
+    }
+
+    function flipAllCards() {
+        //should do flipping and unflipping of all cards
+        var cards = document.getElementsByClassName("card");
+
+        // $('.card').each(function () {
+        //     console.log(this);
+        //     $('.card').flip({
+        //         //some optional stuff for flipping animation
+        //         axis: 'x',
+        //         //trigger: 'hover',
+        //         speed:200})
+        // });
+
+        for (i = 0; i < cards.length; i++){
+            $('cards[i]').flip({
+                //some optional stuff for flipping animation
+                axis: 'x',
+                //trigger: 'hover',
+                speed:200});
+        }
+    }
+
+    // Update UI based on nutrition data
     function updateUi(data) {
         // hide loading animation
         $('#nutrition_loading').hide();
@@ -90,22 +122,21 @@ $(document).ready(function () {
         $('#nutrition_explanation').text(text);
     }
 
+    //END Section: Methods
 
 
+// get the URL currently opened tab
+    chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
+        var url = tabs[0].url;
+        var http_params = {
+            "url": url
+        };
+
+        var bg = chrome.extension.getBackgroundPage();
+        bg.getNutritionLabels(url, updateUi);
+    });
 
 
-    //should do flipping and unflipping of all cards
-    let cards = document.getElementsByClassName("card");
-    document.getElementById('flipButton').addEventListener( 'click', function(){
-        for (i = 0; i < cards.length; i++){
-            cards[i].flip({
-                //some optional stuff for flipping animation
-                axis: 'x',
-                //trigger: 'hover',
-                speed:200});
-            }
-
-        }, false);
 
 });
 
