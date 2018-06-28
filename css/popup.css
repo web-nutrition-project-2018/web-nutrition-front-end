@@ -63,6 +63,17 @@ span {
 	background-color: #3a4b8b;
 }
 
+#flipButton{
+
+	background-color: #3a4b8b;
+	border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 12px;
+}
+
 .label-name {
 	text-align: center;
 	padding-top: 1em;
