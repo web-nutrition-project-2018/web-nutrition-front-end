@@ -47,7 +47,7 @@ function fetchNutritionLabels(url, callback=null) {
         if (USE_MOCK_DATA) {
             cache[url] = {ready: true, response: MOCK_DATA};
             if (callback != null) {
-                callback(MOCK_DATA);
+                setTimeout(function(){ callback(MOCK_DATA); }, 3000);
             }
         } else {
             (function() {
