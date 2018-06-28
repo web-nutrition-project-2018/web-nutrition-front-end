@@ -2,7 +2,7 @@
  * Created by Clau on 18.06.2018.
  */
 
-var USE_MOCK_DATA = false
+var USE_MOCK_DATA = true;
 
 /*
  * Caches the result from server so when the user clicks our icon,
@@ -92,41 +92,90 @@ function getNutritionLabels(url, callback) {
  */
 var MOCK_LOADING_TIME = 1000 // milliseconds
 var MOCK_DATA = {
-    "nutrition": [
-        {
-            "name": "effort",
-            "display": "effort",
-            "value": 50,
-            "percentage": 100,
-            "color": "#f00"
-        },
-        {
-            "name": "topicality",
-            "display": "topicality",
-            "value": 40,
-            "percentage": 75,
-            "color": "#fc0"
-        },
-        {
-            "name": "factuality",
-            "display": "factuality",
-            "value": 30,
-            "percentage": 50,
-            "color": "#0f0"
-        },
-        {
-            "name": "emotion",
-            "display": "emotion",
-            "value": 20,
-            "percentage": 25,
-            "color": "#0cc"
-        },
-        {
-            "name": "authority",
-            "display": "authority",
-            "value": 10,
-            "percentage": 0,
-            "color": "#00f"
-        }
-    ]
-};
+    "url": "https://en.wikipedia.org/wiki/Chess",
+    "nutrition": {
+      "sentiment": {
+        "subfeatures": [
+          {
+            "name": "Positive sentiment",
+            "value": 8.37673951952889,
+            "percentage": 8.37673951952889
+          },
+          {
+            "name": "Negative sentiment",
+            "value": 5.290179512665281,
+            "percentage": 5.290179512665281
+          }
+        ],
+        "main_score": 13.666919032194171,
+        "status": "ok"
+      },
+      "virality": {
+        "subfeatures": [
+          {
+            "name": "Tweets per hour",
+            "value": 48.28743219561765,
+            "percentage": 82.84364292041698
+          }
+        ],
+        "main_score": 82.84364292041698,
+        "status": "ok"
+      },
+      "influence": {
+        "subfeatures": [
+          {
+            "name": "Web of Trust",
+            "value": 94.0,
+            "percentage": 94.0
+          },
+          {
+            "name": "Alexa Rank",
+            "value": 98.41605470367712,
+            "percentage": 98.41605470367712
+          },
+          {
+            "name": "Google Page Rank",
+            "value": 80.0,
+            "percentage": 80.0
+          },
+          {
+            "name": "CheckPageRank.net Score",
+            "value": 89.0,
+            "percentage": 89.0
+          },
+          {
+            "name": "Twitter followers",
+            "value": 0.10040409882978961,
+            "percentage": 0.10040409882978961
+          },
+          {
+            "name": "Twitter friends",
+            "value": 0.10040409882978961,
+            "percentage": 0.10040409882978961
+          },
+          {
+            "name": "Twitter listed",
+            "value": 0.7330296921722262,
+            "percentage": 0.7330296921722262
+          }
+        ],
+        "main_score": 51.76427037050127,
+        "status": "ok"
+      },
+      "objectivity": {
+        "subfeatures": [
+          
+        ],
+        "main_score": 68.6500570727326,
+        "status": "ok"
+      },
+      "readability": {
+        "subfeatures": [
+          
+        ],
+        "main_score": 80.0,
+        "status": "ok"
+      }
+    },
+    "status": "ok"
+  };

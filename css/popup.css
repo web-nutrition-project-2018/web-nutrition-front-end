@@ -92,10 +92,7 @@ span {
 }
 
 .header {
-	padding-top: 0.6em;
-	padding-bottom: 0.7em;
-	margin-top: 0.7em;
-	margin-bottom: 0.7em;
+	padding-top: 0.2em;
 	color: #090909;
 	background-color: #ffffff;
 }
@@ -143,6 +140,25 @@ span {
 	font-size: 12px;
 	line-height: 20px;
 	pointer-events: none;
+}
+
+.hbar {
+	color: white;
+	text-shadow: black 1px 1px;
+	box-sizing: border-box;
+	text-align: center;
+	font-size: 85%;
+
+	padding-top: -0.1em;
+	padding-bottom: -0.1em;
+}
+
+.main-score-spacer {
+	height: 12px;
+}
+
+.subfeature-spacer {
+	height: 2px;
 }
 
 #nutrition_explanation {
