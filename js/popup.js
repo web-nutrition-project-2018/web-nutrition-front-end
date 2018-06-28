@@ -69,7 +69,8 @@ $(document).ready(function () {
 
     function flipAllCards() {
         //should do flipping and unflipping of all cards
-        var cards = document.getElementsByClassName("card");
+        let cards = document.getElementsByClassName("card");
+
 
         // $('.card').each(function () {
         //     console.log(this);
@@ -81,11 +82,22 @@ $(document).ready(function () {
         // });
 
         for (i = 0; i < cards.length; i++){
-            $('cards[i]').flip({
-                //some optional stuff for flipping animation
-                axis: 'x',
+            cards[i].flip(true);
+
+
+            /*$('.card').flip({
+            //some optional stuff for flipping animation
+            axis: 'x',
+            //trigger: 'hover',
+            speed:200,
+            });
+            //flipCard(card);
+
+            //$(cards[i]).flip({
+             //   //some optional stuff for flipping animation
+               // axis: 'x',
                 //trigger: 'hover',
-                speed:200});
+                //speed:200});*/
         }
     }
 
