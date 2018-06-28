@@ -124,7 +124,7 @@ $(document).ready(function () {
                 if (labelData.status != 'ok') {
                     markCardUnavailable(label);
                 } else {
-                    backSide.append(createHBar(mainScore, mainScore + '%', ));
+                    backSide.append(createHBar(mainScore, mainScore + '%', 'Overall ' + mainScore + '%'));
                     backSide.append('<div class="main-score-spacer"></div>');
                     
                     let first = true;

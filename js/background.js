@@ -2,7 +2,7 @@
  * Created by Clau on 18.06.2018.
  */
 
-var USE_MOCK_DATA = true;
+var USE_MOCK_DATA = false;
 
 /*
  * Caches the result from server so when the user clicks our icon,
