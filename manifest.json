@@ -4,7 +4,7 @@
     "version": "1.0.0",
     "description": "NewsCheck",
     "icons": {
-        "16": "images/icon16.png"
+        "16": "images/Icon.png"
     },
     "browser_action": {
         "default_icon": "images/Icon.png",
