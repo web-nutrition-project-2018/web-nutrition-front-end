@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     //First set height!
-    setHeight()
+    setHeight();
 
     //BEGIN Section: Selctors
 
@@ -12,10 +12,6 @@ $(document).ready(function () {
     $('#flipButton').click(function () {
         flipAllCards();
     });
-
-    function test () {
-        console.log("yes");
-    }
 
     //load imprint when clicking on the "i"
     $('#imprint').click(function() {
@@ -28,6 +24,20 @@ $(document).ready(function () {
         window.location.href = "popup.html";
     });
 
+    //init loader animations
+    $('.loader').append(`
+        <div class="sk-cube-grid">
+            <div class="sk-cube sk-cube1"></div>
+            <div class="sk-cube sk-cube2"></div>
+            <div class="sk-cube sk-cube3"></div>
+            <div class="sk-cube sk-cube4"></div>
+            <div class="sk-cube sk-cube5"></div>
+            <div class="sk-cube sk-cube6"></div>
+            <div class="sk-cube sk-cube7"></div>
+            <div class="sk-cube sk-cube8"></div>
+            <div class="sk-cube sk-cube9"></div>
+        </div>
+    `);
 
     //END Section: Selectors
 
@@ -81,38 +91,53 @@ $(document).ready(function () {
 
     // Update UI based on nutrition data
     function updateUi(data) {
+        labels = ['influence', 'virality', 'readability', 'sentiment', 'objectivity']
+
         // hide loading animation
-        $('#nutrition_loading').hide();
+        $('.loader').remove();
 
-
-        if (data.error != null) {
+        if (data.status != 'ok') {
             // show error
+            labels.forEach(label => {
+                markCardUnavailable(label);
+            });
             $('#nutrition_explanation').text(data.error);
         } else {
             // for each nutrition label, create a bar chart
-            labels = ['influence', 'virality', 'readability', 'sentiment', 'objectivity']
             labels.forEach(label => {
                 let labelData = data.nutrition[label];
                 let backSide = $('#card_' + label + ' .back');
                 let mainScore = Math.round(labelData.main_score);
 
-                backSide.append(createHBar(mainScore, mainScore));
-                backSide.append('<div class="main-score-spacer"></div>');
-                
-                let first = true;
-                labelData.subfeatures.forEach(subfeature => {
-                    if (!first) {
-                        backSide.append('<div class="subfeature-spacer"></div>');
-                    }
-                    first = false;
-
-                    let shortName = subfeature.name.length < 12
-                        ? subfeature.name
-                        : subfeature.name.substring(0, 10) + '..';
-                    backSide.append(createHBar(subfeature.percentage, shortName + ': ' + Math.round(subfeature.value), subfeature.name));
-                });
+                if (labelData.status != 'ok') {
+                    markCardUnavailable(label);
+                } else {
+                    backSide.append(createHBar(mainScore, mainScore + '%', ));
+                    backSide.append('<div class="main-score-spacer"></div>');
+                    
+                    let first = true;
+                    labelData.subfeatures.forEach(subfeature => {
+                        if (!first) {
+                            backSide.append('<div class="subfeature-spacer"></div>');
+                        }
+                        first = false;
+    
+                        let shortName = subfeature.name.length < 12
+                            ? subfeature.name
+                            : subfeature.name.substring(0, 10) + '..';
+                        backSide.append(createHBar(subfeature.percentage, shortName + ': ' + Math.round(subfeature.value), subfeature.name));
+                    });
+                }
             });
         }
+    }
+
+    function markCardUnavailable(label) {
+        let backSide = $('#card_' + label + ' .back');
+        let frontSide = $('#card_' + label + ' .front');
+        backSide.append('<div>unavailable</div>');
+        backSide.addClass('unavailable');
+        frontSide.addClass('unavailable');
     }
 
     function createHBar(percentage, text, tooltip) {
@@ -127,20 +152,12 @@ $(document).ready(function () {
         return hbar;
     }
 
-    function updateExplanation(text) {
-        $('#nutrition_explanation').text(text);
-    }
-
     //END Section: Methods
 
 
 // get the URL currently opened tab
     chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
         var url = tabs[0].url;
-        var http_params = {
-            "url": url
-        };
-
         var bg = chrome.extension.getBackgroundPage();
         bg.getNutritionLabels(url, updateUi);
     });

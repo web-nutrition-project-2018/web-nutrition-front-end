@@ -48,12 +48,21 @@ span {
 	transform: rotateY(0deg);
 }
 
+.front.unavailable {
+	opacity: 0.25;
+}
+
 .back {
 	position: absolute;
 	padding: 0.01em;
 	backface-visibility: hidden;
 	transform: rotateY(-180deg);
 }
+
+.back.unavailable {
+	opacity: 0.25;
+}
+
 .plugin-name {
 	padding-top: 0.5em;
 	padding-bottom: 0.5em;
@@ -104,10 +113,6 @@ span {
 	height: 200px;
 	vertical-align: middle;
 	text-align: center;
-}
-
-.loader {
-	animation: spin 0.75s linear infinite;
 }
 
 @keyframes spin {
