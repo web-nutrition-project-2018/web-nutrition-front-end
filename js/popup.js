@@ -16,6 +16,9 @@ let cards = [
     }, {
         label: 'objectivity',
         displayName: 'Objectivity'
+    }, {
+        label: 'bias',
+        displayName: 'Bias'
     }
 ]
 

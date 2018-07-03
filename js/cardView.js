@@ -61,6 +61,7 @@ export class CardView {
         } else {
             this.backSide.append(this.createHBar(mainScore, mainScore + '%', 'Overall ' + mainScore + '%'));
             this.backSide.append('<div class="main-score-spacer"></div>');
+            this.backSide.append('<hr> ');
             
             let first = true;
             labelData.subfeatures.forEach(subfeature => {
