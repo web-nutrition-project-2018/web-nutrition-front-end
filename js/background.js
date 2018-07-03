@@ -170,11 +170,7 @@ var MOCK_DATA = {
         "status": "ok"
       },
       "readability": {
-        "subfeatures": [
-          
-        ],
-        "main_score": 80.0,
-        "status": "ok"
+        "status": "error"
       }
     },
     "status": "ok"

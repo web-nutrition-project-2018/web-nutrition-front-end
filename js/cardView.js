@@ -41,7 +41,7 @@ export class CardView {
         let mainScore = Math.round(labelData.main_score);
 
         if (labelData.status != 'ok') {
-            showError();
+            this.showError();
         } else {
             this.backSide.append(this.createHBar(mainScore, mainScore + '%', 'Overall ' + mainScore + '%'));
             this.backSide.append('<div class="main-score-spacer"></div>');
