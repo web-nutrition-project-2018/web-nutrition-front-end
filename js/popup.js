@@ -1,4 +1,47 @@
+import { CardView } from "./cardView.js";
+
+let cards = [
+    {
+        label: 'source',
+        displayName: 'Source Popularity'
+    }, {
+        label: 'virality',
+        displayName: 'Virality'
+    }, {
+        label: 'readability',
+        displayName: 'Readability'
+    }, {
+        label: 'sentiment',
+        displayName: 'Sentiment'
+    }, {
+        label: 'objectivity',
+        displayName: 'Objectivity'
+    }
+]
+
+let cardViews = [];
+
 $(document).ready(function () {
+
+    // create cards
+    let mainLayout = $('#nutrition_layout');
+
+    let rowSize = 3;
+    let rowLayout = null;
+    cards.forEach(card => {
+        // create row layout every 3 labels
+        rowSize++;
+        if (rowSize >= 3) {
+            rowLayout = $('<div class="row content"></div>');
+            mainLayout.append(rowLayout);
+            mainLayout.append($('<hr />'));
+            rowSize = 0;
+        }
+
+        // create card layout
+        card.view = new CardView(card);
+        rowLayout.append(card.view.uiElement);
+    });
 
     //First set height!
     setHeight();
@@ -44,19 +87,29 @@ $(document).ready(function () {
 
     //BEGIN Section: Methods
 
+    
+    /**
+     * This is a workaround method  to attach a listener so that when the images
+     *  are loaded, the height of the label cards are updated accordingly.
+     * 
+     * The cards will otherwise not autosize because the .front and .back
+     *  elements have `position: absolute` style.
+     */
     function setHeight() {
-        var frontHeight = $('.front').outerHeight();
-        var backHeight = $('.back').outerHeight();
+        $('#nutrition_layout img').on('load', function() {
+            let frontHeight = $('.front').outerHeight();
+            let backHeight = $('.back').outerHeight();
 
-        if (frontHeight > backHeight) {
-            $('.flip-container, .card, .back').height(frontHeight);
-        }
-        else if (frontHeight > backHeight) {
-            $('.flip-container, .card, .front').height(backHeight);
-        }
-        else {
-            $('.flip-container, .card, .front').height(backHeight);
-        }
+            if (frontHeight > backHeight) {
+                $('.flip-container, .card, .back').height(frontHeight);
+            }
+            else if (frontHeight > backHeight) {
+                $('.flip-container, .card, .front').height(backHeight);
+            }
+            else {
+                $('.flip-container, .card, .front').height(backHeight);
+            }
+        });
     }
 
     function flipCard() {
@@ -103,65 +156,17 @@ $(document).ready(function () {
 
     // Update UI based on nutrition data
     function updateUi(data) {
-        labels = ['influence', 'virality', 'readability', 'sentiment', 'objectivity']
-
         // hide loading animation
         $('.loader').remove();
 
         if (data.status != 'ok') {
-            // show error
-            labels.forEach(label => {
-                markCardUnavailable(label);
-            });
-            $('#nutrition_explanation').text(data.error);
+            cards.forEach(card => card.view.showError(data.error));
         } else {
-            // for each nutrition label, create a bar chart
-            labels.forEach(label => {
-                let labelData = data.nutrition[label];
-                let backSide = $('#card_' + label + ' .back');
-                let mainScore = Math.round(labelData.main_score);
-
-                if (labelData.status != 'ok') {
-                    markCardUnavailable(label);
-                } else {
-                    backSide.append(createHBar(mainScore, mainScore + '%', 'Overall ' + mainScore + '%'));
-                    backSide.append('<div class="main-score-spacer"></div>');
-                    
-                    let first = true;
-                    labelData.subfeatures.forEach(subfeature => {
-                        if (!first) {
-                            backSide.append('<div class="subfeature-spacer"></div>');
-                        }
-                        first = false;
-    
-                        let shortName = subfeature.name.length < 12
-                            ? subfeature.name
-                            : subfeature.name.substring(0, 10) + '..';
-                        backSide.append(createHBar(subfeature.percentage, shortName + ': ' + Math.round(subfeature.value), subfeature.name));
-                    });
-                }
-            });
+            console.log('showing data...');
+            console.log(cards);
+            cards.forEach(card => console.log(card.view));
+            cards.forEach(card => card.view.showData(data));
         }
-    }
-
-    function markCardUnavailable(label) {
-        let backSide = $('#card_' + label + ' .back');
-        let frontSide = $('#card_' + label + ' .front');
-        backSide.append('<div>unavailable</div>');
-        backSide.addClass('unavailable');
-        frontSide.addClass('unavailable');
-    }
-
-    function createHBar(percentage, text, tooltip) {
-        let hbar = $(`
-            <div class='hbar'
-                 style='background: linear-gradient(to right, #3a4b8b ${percentage}% , #ccc ${percentage}%);'
-                 title='${tooltip}'>
-                ${text}
-            </div>
-        `);
-        hbar.tooltip();
-        return hbar;
     }
 
     //END Section: Methods

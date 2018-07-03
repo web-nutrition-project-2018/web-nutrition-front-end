@@ -104,9 +104,10 @@ span {
 	padding-top: 0.2em;
 	color: #090909;
 	background-color: #ffffff;
+	height: 50px;
 }
-
-#nutrition_loading {
+/*
+#nutrition_layout {
 	color: #fcfcfc;
 	font-size: 75px;
 	width: 100%;
@@ -114,7 +115,7 @@ span {
 	vertical-align: middle;
 	text-align: center;
 }
-
+*/
 @keyframes spin {
 	0% { transform: rotate(0deg); }
 	100% { transform: rotate(360deg); }
