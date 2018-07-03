@@ -119,8 +119,6 @@ $(document).ready(function () {
         if (data.status != 'ok') {
             cards.forEach(card => card.view.showError(data.error));
         } else {
-            console.log('showing data...');
-            console.log(cards);
             cards.forEach(card => console.log(card.view));
             cards.forEach(card => card.view.showData(data));
         }
