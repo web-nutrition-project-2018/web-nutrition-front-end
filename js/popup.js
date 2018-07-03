@@ -42,10 +42,7 @@ $(document).ready(function () {
         card.view = new CardView(card);
         rowLayout.append(card.view.uiElement);
     });
-
-    //First set height!
-    setHeight();
-
+    
     //BEGIN Section: Selctors
 
     $('.flip-container').click(function () {
@@ -86,31 +83,6 @@ $(document).ready(function () {
 
 
     //BEGIN Section: Methods
-
-    
-    /**
-     * This is a workaround method  to attach a listener so that when the images
-     *  are loaded, the height of the label cards are updated accordingly.
-     * 
-     * The cards will otherwise not autosize because the .front and .back
-     *  elements have `position: absolute` style.
-     */
-    function setHeight() {
-        $('#nutrition_layout img').on('load', function() {
-            let frontHeight = $('.front').outerHeight();
-            let backHeight = $('.back').outerHeight();
-
-            if (frontHeight > backHeight) {
-                $('.flip-container, .card, .back').height(frontHeight);
-            }
-            else if (frontHeight > backHeight) {
-                $('.flip-container, .card, .front').height(backHeight);
-            }
-            else {
-                $('.flip-container, .card, .front').height(backHeight);
-            }
-        });
-    }
 
     function flipCard() {
         $('.card').flip({

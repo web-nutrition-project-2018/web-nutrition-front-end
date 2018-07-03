@@ -39,6 +39,7 @@ span {
 	margin: 0.1em;
     transition: transform 1.5s;
 	transform-style:preserve-3d;
+	height: 200px;
 }
 
 .front {

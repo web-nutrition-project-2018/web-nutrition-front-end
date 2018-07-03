@@ -1,6 +1,4 @@
 
-// labels = ['influence', 'virality', 'readability', 'sentiment', 'objectivity']
-
 export class CardView {
     constructor(card) {
         this.card = card;
@@ -29,12 +27,9 @@ export class CardView {
 
         this.backSide = this.uiElement.find(`#card_${this.card.label} .back`);
         this.frontSide = this.uiElement.find(`#card_${this.card.label} .front`);
-        console.log(this.backSide);
-        console.log(this.frontSide);
     }
     
     showError() {
-        console.log('show error');
         this.backSide.append('<div>unavailable</div>');
         this.backSide.addClass('unavailable');
         this.frontSide.addClass('unavailable');
