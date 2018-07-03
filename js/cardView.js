@@ -17,7 +17,23 @@ export class CardView {
                                     <span><img class="label-icon img-fluid" src="images/${this.card.label}_small.png"/></span>
                                     <h4>${this.card.displayName}</h4>
                                 </div>
-                                <div class="loader"></div>
+
+                                <!-- Loader animation -->
+                                <div class="loader">
+                                    <div class="sk-cube-grid">
+                                        <div class="sk-cube sk-cube1"></div>
+                                        <div class="sk-cube sk-cube2"></div>
+                                        <div class="sk-cube sk-cube3"></div>
+                                        <div class="sk-cube sk-cube4"></div>
+                                        <div class="sk-cube sk-cube5"></div>
+                                        <div class="sk-cube sk-cube6"></div>
+                                        <div class="sk-cube sk-cube7"></div>
+                                        <div class="sk-cube sk-cube8"></div>
+                                        <div class="sk-cube sk-cube9"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Subfeature bar chart will be generated here -->
                             </div>
                         </div>
                     </div>
