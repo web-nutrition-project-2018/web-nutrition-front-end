@@ -14,7 +14,7 @@
     <script src="js/libs/jquery.flip.min.js"></script>
     <script src="js/libs/tether.min.js"></script>
     <script src="js/libs/bootstrap.min.js"></script>
-    <script src="js/popup.js"></script>
+    <script type="module" src="js/popup.js"></script>
 </head>
 <body>
 <div class="container-fluid">
@@ -28,149 +28,8 @@
         </div>
     </div>
 
-
-    <div class="nutrition_loading">
-        <!--Content Row: Display Labels-->
-        <div class="row content">
-
-            <div class="col-4 vertical-divider">
-                <div class="col-content">
-                    <div class="flip-container">
-                        <div class="card" id="card_influence">
-                            <div class="front">
-                                <img class="label-icon img-fluid" src="images/source.png"/>
-                                <h4 class="label-name">Source Popularity</h4>
-                                <!--<img class="img-fluid" src="images/gauge-placeholder.JPG"/>-->
-                            </div>
-                            <div class="back">
-                                <div class="header">
-                                    <span><img class="label-icon img-fluid" src="images/avatar.png"/></span>
-                                    <h4>Source</h4>
-                                </div>
-                                <div class="loader"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-4 vertical-divider">
-                <div class="col-content">
-                    <div class="flip-container">
-                        <div class="card" id="card_virality">
-                            <div class="front">
-                                <img class="label-icon img-fluid" src="images/virality.png"/>
-                                <h4 class="label-name">Virality</h4>
-                            </div>
-                            <div class="back">
-                                <div class="header">
-                                    <span><img class="label-icon img-fluid" src="images/network.png"/></span>
-                                    <h4>Virality</h4>
-                                </div>
-                                <div class="loader"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-4 vertical-divider">
-                <div class="col-content">
-                    <div class="flip-container">
-                        <div class="card" id="card_readability">
-                            <div class="front">
-                                <img class="label-icon img-fluid" src="images/readability.png"/>
-                                <h4 class="label-name">Readability</h4>
-                                <!--<img class="img-fluid" src="images/gauge-placeholder.JPG"/>-->
-                            </div>
-                            <div class="back">
-                                <div class="header">
-                                    <span><img class="label-icon img-fluid" src="images/readability1.png"/></span>
-                                    <h4>Readability</h4>
-                                </div>
-                                <div class="loader"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <hr/>
-
-        <!--Content Row: Display Labels-->
-        <div class="row content">
-
-            <div class="col-4 vertical-divider">
-                <div class="col-content">
-                    <div class="flip-container">
-                        <div class="card" id="card_sentiment">
-                            <div class="front">
-                                <img class="label-icon img-fluid" src="images/happy_sad.png"/>
-                                <h4 class="label-name">Sentiment</h4>
-                                <!--<img class="img-fluid" src="images/gauge-placeholder.JPG"/>-->
-                            </div>
-                            <div class="back">
-                                <div class="header">
-                                    <span><img class="label-icon img-fluid" src="images/happy_sad1.png"/></span>
-                                    <h4>Sentiment</h4>
-                                </div>
-                                <div class="loader"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-4 vertical-divider">
-                <div class="col-content">
-                    <div class="flip-container">
-                        <div class="card" id="card_objectivity">
-                            <div class="front">
-                                <img class="label-icon img-fluid" src="images/balance.png"/>
-                                <h4 class="label-name">Objectivity</h4>
-                                <!--<img class="img-fluid" src="images/gauge-placeholder.JPG"/>-->
-                            </div>
-                            <div class="back">
-                                <div class="header">
-                                    <span><img class="label-icon img-fluid" src="images/bala-small.png"/></span>
-                                    <h4>Objectivity</h4>
-                                </div>
-                                <div class="loader"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-4 vertical-divider">
-                <!--<div class="col-content">-->
-                    <!--<div class="flip-container">-->
-                        <!--<div class="card" id="card_hot-topic">-->
-                            <!--<div class="front">-->
-                                <!--<img class="label-icon img-fluid" src="images/fire.png"/>-->
-                                <!--<h4 class="label-name">Hot Topic</h4>-->
-                                <!--<img class="img-fluid" src="images/gauge-placeholder.JPG"/>-->
-                            <!--</div>-->
-                            <!--<div class="back">-->
-                                <!--<div class="header">-->
-                                    <!--<span><img class="label-icon img-fluid" src="images/fire-small.png"/></span>-->
-                                    <!--<h4>Hot-Topic</h4>-->
-                                <!--</div>-->
-                                <!--<div class="loader"></div>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-            </div>
-
-        </div>
-
-        <hr/>
+    <div id="nutrition_layout">
+        <!-- Nutrition labels content will be generated in here -->
     </div>
 
     <div class="row footer">

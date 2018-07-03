@@ -121,7 +121,7 @@ var MOCK_DATA = {
         "main_score": 82.84364292041698,
         "status": "ok"
       },
-      "influence": {
+      "source": {
         "subfeatures": [
           {
             "name": "Web of Trust",
@@ -170,11 +170,7 @@ var MOCK_DATA = {
         "status": "ok"
       },
       "readability": {
-        "subfeatures": [
-          
-        ],
-        "main_score": 80.0,
-        "status": "ok"
+        "status": "error"
       }
     },
     "status": "ok"
