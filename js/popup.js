@@ -9,7 +9,7 @@ let cards = [
         displayName: 'Virality'
     }, {
         label: 'readability',
-        displayName: 'Readability'
+        displayName: 'Ease of Reading'
     }, {
         label: 'sentiment',
         displayName: 'Sentiment'
@@ -42,7 +42,7 @@ $(document).ready(function () {
         card.view = new CardView(card);
         rowLayout.append(card.view.uiElement);
     });
-    
+
     //BEGIN Section: Selctors
 
     $('.flip-container').click(function () {
