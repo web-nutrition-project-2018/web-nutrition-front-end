@@ -52,6 +52,13 @@ span {
 	opacity: 0.25;
 }
 
+.front-card-info {
+	text-align: right;
+    position: absolute;
+	font-size: 125%;
+	right: 0;
+}
+
 .back {
 	position: absolute;
 	padding: 0.01em;

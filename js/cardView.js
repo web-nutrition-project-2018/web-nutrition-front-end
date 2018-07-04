@@ -10,6 +10,7 @@ export class CardView {
                     <div class="flip-container">
                         <div class="card" id="card_${this.card.label}">
                             <div class="front">
+                                <div class="front-card-info"><i class="fas fa-question-circle"></i></div>
                                 <img class="label-icon img-fluid" src="images/${this.card.label}.png"/>
                                 <h4 class="label-name">${this.card.displayName}</h4>
                             </div>
@@ -41,9 +42,15 @@ export class CardView {
                 </div>
             </div>
         `);
+        
+        this.backSide = this.uiElement.find('.back');
+        this.frontSide = this.uiElement.find('.front');
 
-        this.backSide = this.uiElement.find(`#card_${this.card.label} .back`);
-        this.frontSide = this.uiElement.find(`#card_${this.card.label} .front`);
+        this.frontHintIcon = this.uiElement.find('.front-card-info');
+
+        this.frontHintIcon.on('mouseenter', function() {
+            this.frontHintIcon.notify(this.card.tooltip);
+        }.bind(this));
     }
     
     showError() {
