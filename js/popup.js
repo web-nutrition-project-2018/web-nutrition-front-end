@@ -3,22 +3,28 @@ import { CardView } from "./cardView.js";
 let cards = [
     {
         label: 'source',
-        displayName: 'Source Popularity'
+        displayName: 'Source Popularity',
+        tooltip: 'Source popularity measures how far reaching and influential the source is based on its <i>domain name</i>.'
     }, {
         label: 'virality',
-        displayName: 'Virality'
+        displayName: 'Virality',
+        tooltip: 'Virality measures the amount, and speed at which the article spreads over the internet.'
     }, {
         label: 'readability',
-        displayName: 'Ease of Reading'
+        displayName: 'Ease of Reading',
+        tooltip: 'Ease of Reading measures how easy it is to understand the article, especially for young or non-native speakers.'
     }, {
         label: 'sentiment',
-        displayName: 'Sentiment'
+        displayName: 'Sentiment',
+        tooltip: 'Sentiment measures how opiniated the article is towards the topic.'
     }, {
         label: 'objectivity',
-        displayName: 'Objectivity'
+        displayName: 'Objectivity',
+        tooltip: 'Objectivity measures how well the article states clear facts without introducing bias or personal judgments.'
     }, {
         label: 'bias',
-        displayName: 'Bias'
+        displayName: 'Bias',
+        tooltip: 'Bias is coming soon guys.'
     }
 ]
 
