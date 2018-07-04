@@ -52,11 +52,30 @@ span {
 	opacity: 0.25;
 }
 
-.front-card-info {
+.front-card-info-icon {
 	text-align: right;
     position: absolute;
 	font-size: 125%;
 	right: 0;
+}
+
+.card-info {
+	position: absolute;
+	top: 25px;
+    z-index: 1000;
+    padding: 5px 10px;
+	border-radius: 8px;
+	
+    background: #fafafaf3;
+	color: #555;
+	opacity: 0;
+	transition: linear 100ms;
+	transform: scale(0.8) translateY(-7px);
+}
+
+.card-info.card-info-visible {
+	opacity: 1;
+	transform: scale(1);
 }
 
 .back {

@@ -9,8 +9,9 @@ export class CardView {
                 <div class="col-content">
                     <div class="flip-container">
                         <div class="card" id="card_${this.card.label}">
+                            <div class="card-info">${this.card.tooltip}</div>
                             <div class="front">
-                                <div class="front-card-info"><i class="fas fa-question-circle"></i></div>
+                                <div class="front-card-info-icon"><i class="fas fa-question-circle"></i></div>
                                 <img class="label-icon img-fluid" src="images/${this.card.label}.png"/>
                                 <h4 class="label-name">${this.card.displayName}</h4>
                             </div>
@@ -46,10 +47,24 @@ export class CardView {
         this.backSide = this.uiElement.find('.back');
         this.frontSide = this.uiElement.find('.front');
 
-        this.frontHintIcon = this.uiElement.find('.front-card-info');
+        this.frontHintIcon = this.uiElement.find('.front-card-info-icon');
+        this.backHintIcon = this.uiElement.find('.header');
+        this.cardInfo = this.uiElement.find('.card-info');
 
         this.frontHintIcon.on('mouseenter', function() {
-            this.frontHintIcon.notify(this.card.tooltip);
+            this.cardInfo.addClass('card-info-visible');
+        }.bind(this));
+
+        this.frontHintIcon.on('mouseleave', function() {
+            this.cardInfo.removeClass('card-info-visible');
+        }.bind(this));
+
+        this.backHintIcon.on('mouseenter', function() {
+            this.cardInfo.addClass('card-info-visible');
+        }.bind(this));
+
+        this.backHintIcon.on('mouseleave', function() {
+            this.cardInfo.removeClass('card-info-visible');
         }.bind(this));
     }
     
