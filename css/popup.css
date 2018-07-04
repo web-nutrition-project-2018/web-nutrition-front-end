@@ -60,6 +60,7 @@ span {
 }
 
 .card-info {
+	pointer-events: none;
 	position: absolute;
 	top: 25px;
     z-index: 1000;

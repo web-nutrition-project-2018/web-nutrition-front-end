@@ -16,9 +16,12 @@ export class SubfeatureView {
         let light = MIN_LIGHT + (MAX_LIGHT - MIN_LIGHT) * (percentage / 100);
 
         this.uiElement = $(`
-            <div class='hbar'
-                style='background: linear-gradient(to right, hsl(227, 41%, ${MIN_LIGHT}%) 0%, hsl(227, 41%, ${light}%) ${percentage}% , #bbb ${percentage}%);'
-                title='${tooltip}'>
+            <div class="hbar"
+                style="background: linear-gradient(to right,
+                    hsl(227, 41%, ${MIN_LIGHT}%) 0%,
+                    hsl(227, 41%, ${light}%) ${percentage}%,
+                    #bbb ${percentage}%);"
+                title="${tooltip}">
                 ${text}
             </div>
         `);
