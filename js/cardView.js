@@ -112,6 +112,10 @@ export class CardView {
 
             if (subfeatureErrors.length > 0) {
                 // TODO: show info that some subfeatures are missing
+                let tooltip = 'Unable to retrieve:\n' + subfeatureErrors.join('\n');
+                this.missingSubfeatureIcon = $(`<div class="missing-subfeature-icon" title="${tooltip}"><i class="fas fa-info-circle"></i></div>`);
+                this.missingSubfeatureIcon.tooltip();
+                this.backSide.append(this.missingSubfeatureIcon);
             }
         }
     }
