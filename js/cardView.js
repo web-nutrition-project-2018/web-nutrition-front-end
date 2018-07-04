@@ -82,7 +82,7 @@ export class CardView {
         if (labelData.status != 'ok') {
             this.showError();
         } else {
-            this.backSide.append(new SubfeatureView(mainScore, mainScore + '%', 'Overall ' + mainScore + '%').uiElement);
+            this.backSide.append(new SubfeatureView(mainScore, mainScore + '%', this.card.displayName + ': ' + mainScore + '%').uiElement);
             this.backSide.append('<div class="main-score-spacer"></div>');
             this.backSide.append('<hr> ');
             
@@ -104,14 +104,18 @@ export class CardView {
                         : subfeature.name.substring(0, 10) + '..';
                     let text = shortName + ': ' + Math.round(subfeature.value);
                     
-                    let tooltip = 'tooltip' in subfeature ? subfeature.tooltip : subfeature.name
+                    let tooltip = subfeature.tooltip ? subfeature.tooltip : subfeature.name
 
                     this.backSide.append(new SubfeatureView(subfeature.percentage, text, tooltip).uiElement);
                 }
             });
 
+            // If some subfeatures are missing (error), show an information icon with tooltip
             if (subfeatureErrors.length > 0) {
-                // TODO: show info that some subfeatures are missing
+                let tooltip = 'Unable to retrieve:\n' + subfeatureErrors.join('\n');
+                this.missingSubfeatureIcon = $(`<div class="missing-subfeature-icon" title="${tooltip}"><i class="fas fa-info-circle"></i></div>`);
+                this.missingSubfeatureIcon.tooltip();
+                this.backSide.append(this.missingSubfeatureIcon);
             }
         }
     }

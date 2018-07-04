@@ -106,12 +106,14 @@ var MOCK_DATA = {
           "value": 0.4166666666666667,
           "percentage": 0.7045559766521665,
           "name": "Positive sentiment",
+          "tooltip": "How much positivity found in the article's opinions",
           "status": "ok"
         },
         {
           "value": 6.50297619047619,
           "percentage": 2.114681011265161,
           "name": "Negative sentiment",
+          "tooltip": "How much negativity found in the article's opinions",
           "status": "ok"
         }
       ],

@@ -60,6 +60,7 @@ span {
 }
 
 .card-info {
+	pointer-events: none;
 	position: absolute;
 	top: 25px;
     z-index: 1000;
@@ -87,6 +88,20 @@ span {
 
 .back.unavailable {
 	opacity: 0.25;
+	color: #3a4b8b;
+}
+
+.missing-subfeature-icon {
+	font-size: 125%;
+    color: #3a4b8b;
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+
+.tooltip {
+    white-space: pre-line;
 }
 
 .plugin-name {
