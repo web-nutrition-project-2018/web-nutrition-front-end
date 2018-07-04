@@ -1,3 +1,4 @@
+import { SubfeatureView } from "./subfeatureView.js";
 
 export class CardView {
     constructor(card) {
@@ -59,7 +60,7 @@ export class CardView {
         if (labelData.status != 'ok') {
             this.showError();
         } else {
-            this.backSide.append(this.createHBar(mainScore, mainScore + '%', 'Overall ' + mainScore + '%'));
+            this.backSide.append(new SubfeatureView(mainScore, mainScore + '%', 'Overall ' + mainScore + '%').uiElement);
             this.backSide.append('<div class="main-score-spacer"></div>');
             
             let first = true;
@@ -73,27 +74,11 @@ export class CardView {
                 let shortName = subfeature.name.length < 12
                     ? subfeature.name
                     : subfeature.name.substring(0, 10) + '..';
-                this.backSide.append(this.createHBar(subfeature.percentage, shortName + ': ' + Math.round(subfeature.value), subfeature.name));
+                let text = shortName + ': ' + Math.round(subfeature.value);
+                
+                this.backSide.append(new SubfeatureView(subfeature.percentage, text, subfeature.name).uiElement);
             });
         }
-    }
-
-    /**
-     * Creates a horizontal bar for displaying a **subfeature**.
-     * @param {*} percentage bar fill
-     * @param {*} text text inside the bar
-     * @param {*} tooltip text shown on hover
-     */
-    createHBar(percentage, text, tooltip) {
-        let hbar = $(`
-            <div class='hbar'
-                 style='background: linear-gradient(to right, #3a4b8b ${percentage}% , #ccc ${percentage}%);'
-                 title='${tooltip}'>
-                ${text}
-            </div>
-        `);
-        hbar.tooltip();
-        return hbar;
     }
 
 }
