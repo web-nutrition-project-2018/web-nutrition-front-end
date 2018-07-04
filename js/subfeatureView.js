@@ -1,7 +1,7 @@
 
 // How bright the color should be
-let MIN_LIGHT = 20; // same color as title bar background
-let MAX_LIGHT = 55; // brighter color
+let MIN_LIGHT = 55;
+let MAX_LIGHT = 20;
 
 export class SubfeatureView {
 

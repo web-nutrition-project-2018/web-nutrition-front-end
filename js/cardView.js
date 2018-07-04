@@ -64,20 +64,32 @@ export class CardView {
             this.backSide.append('<div class="main-score-spacer"></div>');
             
             let first = true;
-            labelData.subfeatures.forEach(subfeature => {
-                if (!first) {
-                    this.backSide.append('<div class="subfeature-spacer"></div>');
-                }
-                first = false;
 
-                // ellipsis (...) if subfeature name is too long (11 characters max)
-                let shortName = subfeature.name.length < 12
-                    ? subfeature.name
-                    : subfeature.name.substring(0, 10) + '..';
-                let text = shortName + ': ' + Math.round(subfeature.value);
-                
-                this.backSide.append(new SubfeatureView(subfeature.percentage, text, subfeature.name).uiElement);
+            let subfeatureErrors = []
+            labelData.subfeatures.forEach(subfeature => {
+                if (subfeature.status != 'ok') {
+                    subfeatureErrors.push(subfeature.name);
+                } else {
+                    if (!first) {
+                        this.backSide.append('<div class="subfeature-spacer"></div>');
+                    }
+                    first = false;
+    
+                    // ellipsis (...) if subfeature name is too long (11 characters max)
+                    let shortName = subfeature.name.length < 12
+                        ? subfeature.name
+                        : subfeature.name.substring(0, 10) + '..';
+                    let text = shortName + ': ' + Math.round(subfeature.value);
+                    
+                    let tooltip = 'tooltip' in subfeature ? subfeature.tooltip : subfeature.name
+
+                    this.backSide.append(new SubfeatureView(subfeature.percentage, text, tooltip).uiElement);
+                }
             });
+
+            if (subfeatureErrors.length > 0) {
+                // TODO: show info that some subfeatures are missing
+            }
         }
     }
 

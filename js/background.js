@@ -47,7 +47,7 @@ function fetchNutritionLabels(url, callback=null) {
         if (USE_MOCK_DATA) {
             cache[url] = {ready: true, response: MOCK_DATA};
             if (callback != null) {
-                setTimeout(function(){ callback(MOCK_DATA); }, 3000);
+                setTimeout(function(){ callback(MOCK_DATA); }, 1000);
             }
         } else {
             (function() {
@@ -92,86 +92,80 @@ function getNutritionLabels(url, callback) {
  */
 var MOCK_LOADING_TIME = 1000 // milliseconds
 var MOCK_DATA = {
-    "url": "https://en.wikipedia.org/wiki/Chess",
-    "nutrition": {
-      "sentiment": {
-        "subfeatures": [
-          {
-            "name": "Positive sentiment",
-            "value": 8.37673951952889,
-            "percentage": 8.37673951952889
-          },
-          {
-            "name": "Negative sentiment",
-            "value": 5.290179512665281,
-            "percentage": 5.290179512665281
-          }
-        ],
-        "main_score": 13.666919032194171,
-        "status": "ok"
-      },
-      "virality": {
-        "subfeatures": [
-          {
-            "name": "Tweets per hour",
-            "value": 48.28743219561765,
-            "percentage": 82.84364292041698
-          }
-        ],
-        "main_score": 82.84364292041698,
-        "status": "ok"
-      },
-      "source": {
-        "subfeatures": [
-          {
-            "name": "Web of Trust",
-            "value": 94.0,
-            "percentage": 94.0
-          },
-          {
-            "name": "Alexa Rank",
-            "value": 98.41605470367712,
-            "percentage": 98.41605470367712
-          },
-          {
-            "name": "Google Page Rank",
-            "value": 80.0,
-            "percentage": 80.0
-          },
-          {
-            "name": "CheckPageRank.net Score",
-            "value": 89.0,
-            "percentage": 89.0
-          },
-          {
-            "name": "Twitter followers",
-            "value": 0.10040409882978961,
-            "percentage": 0.10040409882978961
-          },
-          {
-            "name": "Twitter friends",
-            "value": 0.10040409882978961,
-            "percentage": 0.10040409882978961
-          },
-          {
-            "name": "Twitter listed",
-            "value": 0.7330296921722262,
-            "percentage": 0.7330296921722262
-          }
-        ],
-        "main_score": 51.76427037050127,
-        "status": "ok"
-      },
-      "objectivity": {
-        "subfeatures": [
-          
-        ],
-        "main_score": 68.6500570727326,
-        "status": "ok"
-      },
-      "readability": {
-        "status": "error"
-      }
+  "nutrition": {
+    "objectivity": {
+      "subfeatures": [
+        
+      ],
+      "main_score": 79.7172619047619,
+      "status": "ok"
     },
-    "status": "ok"
-  };
+    "sentiment": {
+      "subfeatures": [
+        {
+          "value": 0.4166666666666667,
+          "percentage": 0.7045559766521665,
+          "name": "Positive sentiment",
+          "status": "ok"
+        },
+        {
+          "value": 6.50297619047619,
+          "percentage": 2.114681011265161,
+          "name": "Negative sentiment",
+          "status": "ok"
+        }
+      ],
+      "main_score": 6.919642857142857,
+      "status": "ok"
+    },
+    "source": {
+      "subfeatures": [
+        {
+          "value": 94.0,
+          "percentage": 94.0,
+          "name": "Web of Trust Score",
+          "status": "ok"
+        },
+        {
+          "name": "Google Page Rank",
+          "status": "error"
+        },
+        {
+          "name": "CheckPageRank.net Score",
+          "status": "error"
+        },
+        {
+          "value": 38.920478657429754,
+          "percentage": 38.920478657429754,
+          "name": "Twitter followers",
+          "status": "ok"
+        },
+        {
+          "value": 58.51811790156842,
+          "percentage": 58.51811790156842,
+          "name": "Twitter listed count",
+          "status": "ok"
+        }
+      ],
+      "main_score": 94.0,
+      "status": "ok"
+    },
+    "readability": {
+      "status": "error"
+    },
+    "virality": {
+      "subfeatures": [
+        {
+          "value": 0.05646045163106374,
+          "percentage": 0.05646045163106374,
+          "name": "Tweets per hour",
+          "status": "ok"
+        }
+      ],
+      "main_score": 0.5614346310277369,
+      "status": "ok"
+    }
+  },
+  "status": "ok",
+  "url": "https://www.npr.org/2018/07/03/625603260/former-malaysian-prime-minister-arrested-amid-corruption-scandal"
+};
