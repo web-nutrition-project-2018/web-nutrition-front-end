@@ -112,10 +112,10 @@ span {
 
 .hbar {
 	color: white;
-	text-shadow: black 1px 1px;
+	text-shadow: black 1px 1px, black -1px -1px, black 1px -1px, black -1px 1px;
 	box-sizing: border-box;
 	text-align: center;
-	font-size: 85%;
+	font-size: 100%;
 
 	padding-top: -0.1em;
 	padding-bottom: -0.1em;

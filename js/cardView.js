@@ -1,3 +1,4 @@
+import { SubfeatureView } from "./subfeatureView.js";
 
 export class CardView {
     constructor(card) {
@@ -59,42 +60,38 @@ export class CardView {
         if (labelData.status != 'ok') {
             this.showError();
         } else {
-            this.backSide.append(this.createHBar(mainScore, mainScore + '%', 'Overall ' + mainScore + '%'));
+            this.backSide.append(new SubfeatureView(mainScore, mainScore + '%', 'Overall ' + mainScore + '%').uiElement);
             this.backSide.append('<div class="main-score-spacer"></div>');
             this.backSide.append('<hr> ');
             
             let first = true;
+
+            let subfeatureErrors = []
             labelData.subfeatures.forEach(subfeature => {
-                if (!first) {
-                    this.backSide.append('<div class="subfeature-spacer"></div>');
+                if (subfeature.status != 'ok') {
+                    subfeatureErrors.push(subfeature.name);
+                } else {
+                    if (!first) {
+                        this.backSide.append('<div class="subfeature-spacer"></div>');
+                    }
+                    first = false;
+    
+                    // ellipsis (...) if subfeature name is too long (11 characters max)
+                    let shortName = subfeature.name.length < 12
+                        ? subfeature.name
+                        : subfeature.name.substring(0, 10) + '..';
+                    let text = shortName + ': ' + Math.round(subfeature.value);
+                    
+                    let tooltip = 'tooltip' in subfeature ? subfeature.tooltip : subfeature.name
+
+                    this.backSide.append(new SubfeatureView(subfeature.percentage, text, tooltip).uiElement);
                 }
-                first = false;
-
-                // ellipsis (...) if subfeature name is too long (11 characters max)
-                let shortName = subfeature.name.length < 12
-                    ? subfeature.name
-                    : subfeature.name.substring(0, 10) + '..';
-                this.backSide.append(this.createHBar(subfeature.percentage, shortName + ': ' + Math.round(subfeature.value), subfeature.name));
             });
-        }
-    }
 
-    /**
-     * Creates a horizontal bar for displaying a **subfeature**.
-     * @param {*} percentage bar fill
-     * @param {*} text text inside the bar
-     * @param {*} tooltip text shown on hover
-     */
-    createHBar(percentage, text, tooltip) {
-        let hbar = $(`
-            <div class='hbar'
-                 style='background: linear-gradient(to right, #3a4b8b ${percentage}% , #ccc ${percentage}%);'
-                 title='${tooltip}'>
-                ${text}
-            </div>
-        `);
-        hbar.tooltip();
-        return hbar;
+            if (subfeatureErrors.length > 0) {
+                // TODO: show info that some subfeatures are missing
+            }
+        }
     }
 
 }
