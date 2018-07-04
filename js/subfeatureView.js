@@ -1,6 +1,6 @@
 
 // How bright the color should be
-let MIN_LIGHT = 10; // same color as title bar background
+let MIN_LIGHT = 20; // same color as title bar background
 let MAX_LIGHT = 55; // brighter color
 
 export class SubfeatureView {
@@ -17,7 +17,7 @@ export class SubfeatureView {
 
         this.uiElement = $(`
             <div class='hbar'
-                style='background: linear-gradient(to right, hsl(227, 41%, ${light}%) ${percentage}% , #bbb ${percentage}%);'
+                style='background: linear-gradient(to right, hsl(227, 41%, ${MIN_LIGHT}%) 0%, hsl(227, 41%, ${light}%) ${percentage}% , #bbb ${percentage}%);'
                 title='${tooltip}'>
                 ${text}
             </div>
