@@ -13,6 +13,7 @@ export class CardView {
                             <div class="front">
                                 <div class="front-card-info-icon"><i class="fas fa-question-circle"></i></div>
                                 <img class="label-icon img-fluid" src="images/${this.card.label}.png"/>
+                                <div class="front-card-main-score"></div>
                                 <h4 class="label-name">${this.card.displayName}</h4>
                             </div>
                             <div class="back">
@@ -48,6 +49,7 @@ export class CardView {
         this.frontSide = this.uiElement.find('.front');
 
         this.frontHintIcon = this.uiElement.find('.front-card-info-icon');
+        this.frontMainScoreLayout = this.uiElement.find('.front-card-main-score');
         this.backHintIcon = this.uiElement.find('.header');
         this.cardInfo = this.uiElement.find('.card-info');
 
@@ -82,6 +84,7 @@ export class CardView {
         if (labelData.status != 'ok') {
             this.showError();
         } else {
+            this.frontMainScoreLayout.append(new SubfeatureView(mainScore, mainScore + '%').uiElement);
             this.backSide.append(new SubfeatureView(mainScore, mainScore + '%', this.card.displayName + ': ' + mainScore + '%').uiElement);
             this.backSide.append('<div class="main-score-spacer"></div>');
             this.backSide.append('<hr> ');

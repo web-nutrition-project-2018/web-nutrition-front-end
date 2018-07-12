@@ -26,7 +26,9 @@ export class SubfeatureView {
             </div>
         `);
         
-        this.uiElement.tooltip();
+        if (tooltip) {
+            this.uiElement.tooltip();
+        }
     }
 
 }

@@ -79,6 +79,12 @@ span {
 	transform: scale(1);
 }
 
+.front-card-main-score {
+	margin-top: 10px;
+	margin-bottom: -4px;
+	height: 7px;
+}
+
 .back {
 	position: absolute;
 	padding: 0.01em;
