@@ -59,6 +59,11 @@ span {
 	right: 0;
 }
 
+.front hr {
+	margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
 .card-info {
 	pointer-events: none;
 	position: absolute;

@@ -86,7 +86,6 @@ export class CardView {
         } else {
             this.frontMainScoreLayout.append(new SubfeatureView(mainScore, mainScore + '%').uiElement);
             this.backSide.append(new SubfeatureView(mainScore, mainScore + '%', this.card.displayName + ': ' + mainScore + '%').uiElement);
-            this.backSide.append('<div class="main-score-spacer"></div>');
             this.backSide.append('<hr> ');
             
             let first = true;
