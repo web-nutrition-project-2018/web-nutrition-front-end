@@ -57,6 +57,13 @@ span {
     position: absolute;
 	font-size: 125%;
 	right: 0;
+	opacity: 0.2;
+	transition-duration: 500ms;
+}
+
+.front:hover .front-card-info-icon {
+	opacity: 0.75;
+	transition-duration: 200ms;
 }
 
 .front hr {
