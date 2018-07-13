@@ -61,13 +61,13 @@ export class CardView {
             this.cardInfo.removeClass('card-info-visible');
         }.bind(this));
 
-        this.backHintIcon.on('mouseenter', function() {
-            this.cardInfo.addClass('card-info-visible');
-        }.bind(this));
-
-        this.backHintIcon.on('mouseleave', function() {
-            this.cardInfo.removeClass('card-info-visible');
-        }.bind(this));
+        // this.backHintIcon.on('mouseenter', function() {
+        //     this.cardInfo.addClass('card-info-visible');
+        // }.bind(this));
+        //
+        // this.backHintIcon.on('mouseleave', function() {
+        //     this.cardInfo.removeClass('card-info-visible');
+        // }.bind(this));
     }
     
     showError() {
