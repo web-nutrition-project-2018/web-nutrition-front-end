@@ -1,106 +1,148 @@
+import { CardView } from "./cardView.js";
 
-var USE_MOCK_DATA = true
+let cards = [
+    {
+        label: 'source',
+        displayName: 'Source Popularity',
+        tooltip: 'Source popularity measures how far reaching and influential the source is based on its <i>domain name</i>.'
+    }, {
+        label: 'virality',
+        displayName: 'Virality',
+        tooltip: 'Virality measures the amount, and speed at which the article spreads over the internet.'
+    }, {
+        label: 'readability',
+        displayName: 'Ease of Reading',
+        tooltip: 'Ease of Reading measures how easy it is to understand the article, especially for young or non-native speakers.'
+    }, {
+        label: 'sentiment',
+        displayName: 'Sentiment',
+        tooltip: 'Sentiment measures how opiniated the article is towards the topic.'
+    }, {
+        label: 'objectivity',
+        displayName: 'Objectivity',
+        tooltip: 'Objectivity measures how well the article states clear facts without introducing bias or personal judgments.'
+    }, {
+        label: 'bias',
+        displayName: 'Bias',
+        tooltip: 'Bias is coming soon guys.'
+    }
+]
 
-// this function is executed everytime the user clicks on the extension icon (opening the popup)
-$(function(){
-    console.log('popup.js');
+let cardViews = [];
 
-    // get the URL currently opened tab
+$(document).ready(function () {
+
+    // create cards
+    let mainLayout = $('#nutrition_layout');
+
+    let rowSize = 3;
+    let rowLayout = null;
+    cards.forEach(card => {
+        // create row layout every 3 labels
+        rowSize++;
+        if (rowSize >= 3) {
+            rowLayout = $('<div class="row content"></div>');
+            mainLayout.append(rowLayout);
+            mainLayout.append($('<hr />'));
+            rowSize = 0;
+        }
+
+        // create card layout
+        card.view = new CardView(card);
+        rowLayout.append(card.view.uiElement);
+    });
+
+    //BEGIN Section: Selctors
+
+    $('.flip-container').click(function () {
+        flipCard();
+    });
+
+    $('#flipButton').click(function () {
+        flipAllCards();
+    });
+
+    //load imprint when clicking on the "i"
+    $('#imprint').click(function() {
+        // $('html').load('imprint.html');
+        window.location.href = "imprint.html";
+    });
+
+    //go back to landing page
+    $('#back-arrow').click(function() {
+        window.location.href = "popup.html";
+    });
+
+    //END Section: Selectors
+
+
+    //BEGIN Section: Methods
+
+    function flipCard() {
+        $('.card').flip({
+            //some optional stuff for flipping animation
+            axis: 'x',
+            //trigger: 'hover',
+            speed:200});
+    }
+
+    function flipAllCards() {
+        //should do flipping and unflipping of all cards
+        let cards = document.getElementsByClassName("card");
+
+
+        // $('.card').each(function () {
+        //     console.log(this);
+        //     $('.card').flip({
+        //         //some optional stuff for flipping animation
+        //         axis: 'x',
+        //         //trigger: 'hover',
+        //         speed:200})
+        // });
+
+        for (i = 0; i < cards.length; i++){
+            cards[i].flip(true);
+
+
+            /*$('.card').flip({
+            //some optional stuff for flipping animation
+            axis: 'x',
+            //trigger: 'hover',
+            speed:200,
+            });
+            //flipCard(card);
+
+            //$(cards[i]).flip({
+             //   //some optional stuff for flipping animation
+               // axis: 'x',
+                //trigger: 'hover',
+                //speed:200});*/
+        }
+    }
+
+    // Update UI based on nutrition data
+    function updateUi(data) {
+        // hide loading animation
+        $('.loader').remove();
+
+        if (data.status != 'ok') {
+            cards.forEach(card => card.view.showError(data.error));
+        } else {
+            cards.forEach(card => card.view.showData(data));
+        }
+    }
+
+    //END Section: Methods
+
+
+// get the URL currently opened tab
     chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
         var url = tabs[0].url;
-        var http_params = {
-            "url": url
-        };
-
-        if (USE_MOCK_DATA) {
-            setTimeout(() => updateUi(MOCK_DATA), MOCK_LOADING_TIME)
-        } else {
-            $.get( "http://localhost:8081/nutrition", http_params, updateUi );
-        }
+        var bg = chrome.extension.getBackgroundPage();
+        bg.getNutritionLabels(url, updateUi);
     });
+
+
+
 });
 
-// Update UI based on nutrition data
-function updateUi(data) {
-    // hide loading animation
-    $('#nutrition_loading').hide();
-
-
-    if (data.error != null) {
-        // show error
-        $('#nutrition_explanation').text(data.error);
-    } else {
-        // for each nutrition label, create a bar chart
-        data.nutrition.forEach(col => {
-            $('#nutrition_chart').append(`
-                <div class="nutrition-bar" id="bar_${col.name}" tabindex="0">
-                    <div class="nutrition-track">
-                        <div class="nutrition-fill" id="fill_${col.name}">
-                            <span>${Math.round(col.value)}</span>
-                        </div>
-                    </div>
-                </div>
-            `);
-            
-            /*
-             * position the bar in the bar chart so that it is on the bottom and growing upwards
-             *  (otherwise the bar will be on the top, growing downwards)
-             */
-            $('#fill_' + col.name).css({
-                "height": col.percentage + "%",
-                "top": (100 - col.percentage) + "%",
-                "background": col.color
-            });
-
-            // show extra information on hover and click (hover is useless on mobile phone)
-            $('#bar_' + col.name).hover(e => { updateExplanation(col.display); });
-            $('#bar_' + col.name).click(e => { updateExplanation(col.display); });
-        });
-    }
-}
-
-function updateExplanation(text) {
-    $('#nutrition_explanation').text(text);
-}
-
-// If USE_MOCK_DATA is set to true, the following nutrition labels will be used instead of fetching from the server.
-var MOCK_LOADING_TIME = 1000 // milliseconds
-var MOCK_DATA = {
-    "nutrition": [
-        {
-            "name": "effort",
-            "display": "effort",
-            "value": 50,
-            "percentage": 100,
-            "color": "#f00"
-        },
-        {
-            "name": "topicality",
-            "display": "topicality",
-            "value": 40,
-            "percentage": 75,
-            "color": "#fc0"
-        },
-        {
-            "name": "factuality",
-            "display": "factuality",
-            "value": 30,
-            "percentage": 50,
-            "color": "#0f0"
-        },
-        {
-            "name": "emotion",
-            "display": "emotion",
-            "value": 20,
-            "percentage": 25,
-            "color": "#0cc"
-        },
-        {
-            "name": "authority",
-            "display": "authority",
-            "value": 10,
-            "percentage": 0,
-            "color": "#00f"
-        }
-    ]
-};
