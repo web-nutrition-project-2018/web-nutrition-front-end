@@ -12,13 +12,13 @@ export class CardView {
                             <div class="card-info">${this.card.tooltip}</div>
                             <div class="front">
                                 <div class="front-card-info-icon"><i class="fas fa-question-circle"></i></div>
-                                <img class="label-icon img-fluid" src="images/${this.card.label}.png"/>
+                                <img class="label-icon img-fluid" src="images/${this.card.label}_512.png"/>
                                 <div class="front-card-main-score"></div>
                                 <h4 class="label-name">${this.card.displayName}</h4>
                             </div>
                             <div class="back">
                                 <div class="header">
-                                    <span><img class="label-icon img-fluid" src="images/${this.card.label}_small.png"/></span>
+                                    <span><img class="label-icon img-fluid" src="images/${this.card.label}_16.png"/></span>
                                     <h4>${this.card.displayName}</h4>
                                 </div>
 
