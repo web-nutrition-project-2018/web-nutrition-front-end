@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "Web Nutrition",
     "version": "1.0.0",
-    "description": "NewsCheck",
+    "description": "NewsScan",
     "icons": {
         "16": "images/Icon.png"
     },
