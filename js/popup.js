@@ -7,8 +7,8 @@ let cards = [
         tooltip: 'Source popularity measures how far reaching and influential the source is based on its <i>domain name</i>.'
     }, {
         label: 'virality',
-        displayName: 'Virality',
-        tooltip: 'Virality measures the amount, and speed at which the article spreads over the internet.'
+        displayName: 'Article Popularity',
+        tooltip: 'Article Popularity measures the popularity of the article on Twitter.'
     }, {
         label: 'readability',
         displayName: 'Ease of Reading',
