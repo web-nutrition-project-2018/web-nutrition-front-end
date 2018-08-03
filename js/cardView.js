@@ -108,7 +108,7 @@ export class CardView {
                     
                     let tooltip = subfeature.tooltip ? subfeature.tooltip : subfeature.name
 
-                    this.backSide.append(new SubfeatureView(subfeature.percentage, text + '%', tooltip).uiElement);
+                    this.backSide.append(new SubfeatureView(subfeature.percentage, text, tooltip).uiElement);
                 }
             });
 

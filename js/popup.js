@@ -24,7 +24,7 @@ let cards = [
     }, {
         label: 'bias',
         displayName: 'Bias',
-        tooltip: 'Bias is coming soon guys.'
+        tooltip: 'Bias predicts whether the article is biased towards the left / conservatism (0) or to the right / liberalism (100).'
     }
 ]
 
